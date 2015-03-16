@@ -1,5 +1,5 @@
 //
-//  LetraBViewController.h
+//  LetraAViewController.h
 //  Navigation
 //
 //  Created by Vinicius Miana on 2/23/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LetraBViewController : UIViewController
+@interface LetraViewController : UIViewController <UINavigationControllerDelegate>
 
 @end
