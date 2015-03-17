@@ -7,31 +7,80 @@
 //
 
 #import "LetraCViewController.h"
-
-@interface LetraCViewController ()
-
-@end
+#import "LetraAViewController.h"
+#import "LetraBViewController.h"
+#import "iDicionarioManager.h"
+#import "ItemDicionario.h"
 
 @implementation LetraCViewController
 
-- (void)viewDidLoad {
+
+- (void) viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.navigationController setDelegate:self];
+    iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
+    [self setTitle:[[iDicionario.items objectAtIndex:iDicionario.pageCount] letra]];
+    
+    UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(next:)];
+    self.navigationItem.rightBarButtonItem = next;
+    
+    UIBarButtonItem *previous = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(previous:)];
+    self.navigationItem.leftBarButtonItem = previous;
+    
+    UILabel *palavra = [[UILabel alloc] init];
+    [palavra setText:[[iDicionario.items objectAtIndex:iDicionario.pageCount] palavra]];
+    [palavra setFrame:CGRectMake(CGRectGetMidX([self.view bounds])/2, 100, 0, 0)];
+    [palavra sizeToFit];
+    [self.view addSubview:palavra];
+    
+    UIImageView *imagem = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMidX([self.view bounds])/4, 150, 0, 0)];
+    [imagem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", [[iDicionario.items objectAtIndex:iDicionario.pageCount] imagem]]]];
+    [imagem sizeToFit];
+    [imagem setTransform:CGAffineTransformScale(self.view.transform, 0.01, 0.01)];
+    [self.view addSubview:imagem];
+    [UIView animateWithDuration:1 animations:^{
+        [imagem setTransform:CGAffineTransformScale(imagem.transform, 100.0, 100.0)];
+    }];
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(next:)];
+    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [swipeLeft setDelegate:self];
+    [self.view addGestureRecognizer:swipeLeft];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(previous:)];
+    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [swipeRight setDelegate:self];
+    [self.view addGestureRecognizer:swipeRight];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+#pragma mark Navigation
+
+- (void)previous:(id)sender {
+    iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
+    if (iDicionario.pageCount == 0)
+        iDicionario.pageCount = 25;
+    else
+        iDicionario.pageCount--;
+    [self.navigationController setDelegate:nil];
+    if (self.navigationController.viewControllers.count == 1) {
+        LetraBViewController *anterior = [[LetraBViewController alloc] initWithNibName:nil bundle:NULL];
+        [self.navigationController setViewControllers:[NSArray arrayWithObjects:anterior, self, nil] animated:YES];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)next:(id)sender {
+    iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
+    if (iDicionario.pageCount == 25)
+        iDicionario.pageCount = 0;
+    else
+        iDicionario.pageCount++;
+    if (self.navigationController.viewControllers.count == 3)
+        [self.navigationController setViewControllers:[NSArray arrayWithObject:self] animated:YES];
+    LetraAViewController *proximo = [[LetraAViewController alloc] initWithNibName:nil bundle:NULL];
+    [self.navigationController pushViewController:proximo animated:YES];
 }
-*/
+
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "LetraBViewController.h"
+#import "LetraAViewController.h"
 #import "LetraCViewController.h"
 #import "iDicionarioManager.h"
 #import "ItemDicionario.h"
@@ -57,15 +58,27 @@
 
 - (void)previous:(id)sender {
     iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
-    iDicionario.pageCount--;
+    if (iDicionario.pageCount == 0)
+        iDicionario.pageCount = 25;
+    else
+        iDicionario.pageCount--;
     [self.navigationController setDelegate:nil];
+    if (self.navigationController.viewControllers.count == 1) {
+        LetraAViewController *anterior = [[LetraAViewController alloc] initWithNibName:nil bundle:NULL];
+        [self.navigationController setViewControllers:[NSArray arrayWithObjects:anterior, self, nil] animated:YES];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)next:(id)sender {
     iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
-    iDicionario.pageCount++;
-    LetraBViewController *proximo = [[LetraBViewController alloc] initWithNibName:nil bundle:NULL];
+    if (iDicionario.pageCount == 25)
+        iDicionario.pageCount = 0;
+    else
+        iDicionario.pageCount++;
+    if (self.navigationController.viewControllers.count == 3)
+        [self.navigationController setViewControllers:[NSArray arrayWithObject:self] animated:YES];
+    LetraCViewController *proximo = [[LetraCViewController alloc] initWithNibName:nil bundle:NULL];
     [self.navigationController pushViewController:proximo animated:YES];
 }
 
