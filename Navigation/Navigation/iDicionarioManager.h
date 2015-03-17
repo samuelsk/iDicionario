@@ -15,6 +15,5 @@
 @property (strong, nonatomic) NSMutableArray *items;
 
 + (iDicionarioManager *)sharedInstance;
-- (void)fillItems;
 
 @end

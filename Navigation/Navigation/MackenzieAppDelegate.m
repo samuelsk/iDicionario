@@ -8,21 +8,21 @@
 
 #import "MackenzieAppDelegate.h"
 #import "SearchViewController.h"
-#import "LetraViewController.h"
+#import "LetraAViewController.h"
 
 @implementation MackenzieAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    LetraViewController *viewController = [[LetraViewController alloc]
-//                                           initWithNibName:nil
-//                                           bundle:nil];
-//    
-//    
-//    self.navigationController = [[UINavigationController alloc]
-//                                 initWithRootViewController:viewController];
-    SearchViewController *searchViewController = [[SearchViewController alloc] initWithNibName:nil bundle:nil];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    LetraAViewController *viewController = [[LetraAViewController alloc]
+                                           initWithNibName:nil
+                                           bundle:nil];
+    
+    
+    self.navigationController = [[UINavigationController alloc]
+                                 initWithRootViewController:viewController];
+//    SearchViewController *searchViewController = [[SearchViewController alloc] initWithNibName:nil bundle:nil];
+//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     
     self.window = [[UIWindow alloc]
                    initWithFrame:[[UIScreen mainScreen] bounds]];

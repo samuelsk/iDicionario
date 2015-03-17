@@ -7,7 +7,7 @@
 //
 
 #import "SearchViewController.h"
-#import "LetraViewController.h"
+#import "LetraAViewController.h"
 #import "iDicionarioManager.h"
 
 @interface SearchViewController ()
@@ -19,9 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
-    [iDicionario fillItems];
-    
     UIBarButtonItem *dicionario = [[UIBarButtonItem alloc]
                              initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(openDicionario:)];
     self.navigationItem.rightBarButtonItem = dicionario;
@@ -35,7 +32,6 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"Nope");
 //    iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
 }
 
@@ -46,8 +42,8 @@
 #pragma mark - Navigation
 
 -(void)openDicionario:(id)sender {
-    LetraViewController *letraViewController = [[LetraViewController alloc] initWithNibName:nil bundle:NULL];
-    [self.navigationController pushViewController:letraViewController animated:YES];
+    LetraAViewController *letraViewController = [[LetraAViewController alloc] initWithNibName:nil bundle:NULL];
+    [self.navigationController pushViewController:letraViewController animated:NO];
 }
 
 @end

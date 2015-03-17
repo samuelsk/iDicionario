@@ -23,9 +23,10 @@ static bool didFillItems = NO;
     return singleton;
 }
 
-- (void)fillItems {
-    if (!didFillItems) {
-        NSArray *palavras = @[@"Adventure Time", @"Batman Beyond", @"Courage the Cowardly Dog", @"Dexter's Laboratory", @"Earthworm Jim", @"Futurama", @"Gravity Falls", @"He-Man and the Masters of the Universe", @"Invader Zim", @"Johnny Bravo", @"Kim Possible", @"Looney Tunes", @"Megas XLR", @"Neon Genesis Evangelion", @"Ozzy & Drix", @"Pinky and the Brain", @"Quick Draw McGraw", @"Robot Chicken", @"Samurai Jack", @"ThunderCats", @"Underdog", @"Voltron", @"Woody Woodpecker", @"Xiaolin Showdown", @"Yu-Gi-Oh!", @"Zatch Bell!"];
+- (id)init {
+    self = [super init];
+    if (self && !didFillItems) {
+        NSArray *palavras = @[@"Adventure Time", @"Batman Beyond", @"Courage the Cowardly Dog", @"Dexter's Laboratory", @"Earthworm Jim", @"Futurama", @"Gravity Falls", @"He-Man", @"Invader Zim", @"Johnny Bravo", @"Kim Possible", @"Looney Tunes", @"Megas XLR", @"Neon Genesis Evangelion", @"Ozzy & Drix", @"Pinky and the Brain", @"Quick Draw McGraw", @"Robot Chicken", @"Samurai Jack", @"ThunderCats", @"Underdog", @"Voltron", @"Woody Woodpecker", @"Xiaolin Showdown", @"Yu-Gi-Oh!", @"Zatch Bell!"];
         self.items = [[NSMutableArray alloc] init];
         int palavraCount = 0;
         for (int i = 'A'; i <= 'Z'; i++) {
@@ -33,6 +34,7 @@ static bool didFillItems = NO;
             palavraCount++;
         }
     }
+    return self;
 }
 
 @end

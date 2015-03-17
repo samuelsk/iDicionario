@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LetraViewController : UIViewController <UINavigationControllerDelegate>
+@interface LetraAViewController : UIViewController <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
 @end
