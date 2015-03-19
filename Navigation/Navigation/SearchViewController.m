@@ -7,7 +7,7 @@
 //
 
 #import "SearchViewController.h"
-#import "LetraAViewController.h"
+#import "LetraViewController.h"
 #import "iDicionarioManager.h"
 
 @interface SearchViewController ()
@@ -42,7 +42,7 @@
 #pragma mark - Navigation
 
 -(void)openDicionario:(id)sender {
-    LetraAViewController *letraViewController = [[LetraAViewController alloc] initWithNibName:nil bundle:NULL];
+    LetraViewController *letraViewController = [[LetraViewController alloc] initWithNibName:nil bundle:NULL];
     [self.navigationController pushViewController:letraViewController animated:NO];
 }
 
