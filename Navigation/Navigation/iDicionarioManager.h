@@ -11,9 +11,10 @@
 
 @interface iDicionarioManager : NSObject
 
-@property (nonatomic) int pageCount;
+@property (nonatomic) int letterIndex;
 @property (strong, nonatomic) NSMutableArray *items;
 
 + (iDicionarioManager *)sharedInstance;
+- (int)buscaPalavra:(NSString *)termo;
 
 @end

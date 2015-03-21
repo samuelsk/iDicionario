@@ -12,25 +12,21 @@
 
 @implementation MackenzieAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    LetraViewController *viewController = [[LetraViewController alloc]
-                                           initWithNibName:nil
-                                           bundle:nil];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    SearchViewController *searchViewController = [[SearchViewController alloc] init];
+    LetraViewController *letraViewController = [[LetraViewController alloc] init];
+    UINavigationController *searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    UINavigationController *letraNavigationController = [[UINavigationController alloc] initWithRootViewController:letraViewController];
     
+    searchNavigationController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
+    letraNavigationController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
     
-    self.navigationController = [[UINavigationController alloc]
-                                 initWithRootViewController:viewController];
-//    SearchViewController *searchViewController = [[SearchViewController alloc] initWithNibName:nil bundle:nil];
-//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    [tabBarController setViewControllers:@[searchNavigationController, letraNavigationController]];
     
-    self.window = [[UIWindow alloc]
-                   initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.navigationController;
-
-
-    
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+    [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
     
     return YES;

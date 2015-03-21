@@ -10,4 +10,6 @@
 
 @interface LetraViewController : UIViewController <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
+@property (strong, nonatomic) UIToolbar *toolBar;
+
 @end

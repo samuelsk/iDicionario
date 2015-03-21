@@ -20,6 +20,7 @@
 		27156F7018B76AF50053A99C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27156F6E18B76AF50053A99C /* InfoPlist.strings */; };
 		27156F7218B76AF50053A99C /* NavigationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27156F7118B76AF50053A99C /* NavigationTests.m */; };
 		27156F7D18BA89430053A99C /* LetraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27156F7C18BA89430053A99C /* LetraViewController.m */; };
+		7E0BDAFB1ABC95B1002CB28B /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0BDAFA1ABC95B1002CB28B /* EditViewController.m */; };
 		7E0ECD461AB75B5800C2C74C /* ItemDicionario.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0ECD451AB75B5800C2C74C /* ItemDicionario.m */; };
 		7E0ECD491AB75E7900C2C74C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0ECD481AB75E7900C2C74C /* SearchViewController.m */; };
 		7E0ECD4C1AB7600800C2C74C /* iDicionarioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0ECD4B1AB7600800C2C74C /* iDicionarioManager.m */; };
@@ -54,6 +55,8 @@
 		27156F7118B76AF50053A99C /* NavigationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationTests.m; sourceTree = "<group>"; };
 		27156F7B18BA89430053A99C /* LetraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetraViewController.h; sourceTree = "<group>"; };
 		27156F7C18BA89430053A99C /* LetraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetraViewController.m; sourceTree = "<group>"; };
+		7E0BDAF91ABC95B1002CB28B /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		7E0BDAFA1ABC95B1002CB28B /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		7E0ECD441AB75B5800C2C74C /* ItemDicionario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDicionario.h; sourceTree = "<group>"; };
 		7E0ECD451AB75B5800C2C74C /* ItemDicionario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDicionario.m; sourceTree = "<group>"; };
 		7E0ECD471AB75E7900C2C74C /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -123,10 +126,7 @@
 				27156F5C18B76AF50053A99C /* MackenzieAppDelegate.m */,
 				27156F5E18B76AF50053A99C /* Images.xcassets */,
 				27156F5318B76AF50053A99C /* Supporting Files */,
-				7E0ECD471AB75E7900C2C74C /* SearchViewController.h */,
-				7E0ECD481AB75E7900C2C74C /* SearchViewController.m */,
-				27156F7B18BA89430053A99C /* LetraViewController.h */,
-				27156F7C18BA89430053A99C /* LetraViewController.m */,
+				7EE4496C1ABB421600C36980 /* View */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -170,6 +170,19 @@
 				7E0ECD4B1AB7600800C2C74C /* iDicionarioManager.m */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		7EE4496C1ABB421600C36980 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7E0ECD471AB75E7900C2C74C /* SearchViewController.h */,
+				7E0ECD481AB75E7900C2C74C /* SearchViewController.m */,
+				27156F7B18BA89430053A99C /* LetraViewController.h */,
+				27156F7C18BA89430053A99C /* LetraViewController.m */,
+				7E0BDAF91ABC95B1002CB28B /* EditViewController.h */,
+				7E0BDAFA1ABC95B1002CB28B /* EditViewController.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +284,7 @@
 				7E0ECD4C1AB7600800C2C74C /* iDicionarioManager.m in Sources */,
 				7E0ECD461AB75B5800C2C74C /* ItemDicionario.m in Sources */,
 				27156F5D18B76AF50053A99C /* MackenzieAppDelegate.m in Sources */,
+				7E0BDAFB1ABC95B1002CB28B /* EditViewController.m in Sources */,
 				7E0ECD491AB75E7900C2C74C /* SearchViewController.m in Sources */,
 				27156F7D18BA89430053A99C /* LetraViewController.m in Sources */,
 				27156F5918B76AF50053A99C /* main.m in Sources */,

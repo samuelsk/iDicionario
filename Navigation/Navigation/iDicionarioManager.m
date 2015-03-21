@@ -37,4 +37,20 @@ static bool didFillItems = NO;
     return self;
 }
 
+- (int)buscaPalavra:(NSString *)termo {
+    for (int i = 0; i < self.items.count; i++) {
+        if ([[self formatarTermo:[[self.items objectAtIndex:i] palavra]]
+             containsString:[self formatarTermo:termo]])
+            return i;
+    }
+    return -1;
+}
+
+- (NSString *)formatarTermo:(NSString *)termo {
+    termo = [termo stringByReplacingOccurrencesOfString:@" " withString:@""];
+    termo = [termo stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    termo = [termo lowercaseString];
+    return termo;
+}
+
 @end
