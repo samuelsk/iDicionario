@@ -23,7 +23,8 @@
     [super viewDidLoad];
     [self setTitle:@"Busca"];
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, 320, 35)];
+    //A largura da barra é 3px maior (total de 323px) devido a animação de shake.
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, 323, 35)];
     [self.searchBar setBackgroundColor:[UIColor blackColor]];
     [self.searchBar setDelegate:self];
     [self.searchBar setPlaceholder:@"Buscar"];
@@ -39,7 +40,20 @@
 }
 
 - (void)shake {
-    
+    //A animação move a barra de busca 3px para a esquerda e em seguida a retorna para a posição original repetidas vezes, simulando uma animação de shake.
+    [UIView animateWithDuration:0.1 animations:^{
+        //Número de vezes que a animação irá ser repetida.
+        [UIView setAnimationRepeatCount:3];
+        //Move a barra 3px para a esquerda.
+        [self.searchBar setTransform:CGAffineTransformTranslate(CGAffineTransformIdentity, -3, 0)];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView animateWithDuration:0.1 animations:^{
+                //Retorna a barra para a matriz de coordenadas original. Sem esse método, a animação só poderá acontecer uma vez.
+                [self.searchBar setTransform:CGAffineTransformIdentity];
+            }];
+        }
+    }];
 }
 
 

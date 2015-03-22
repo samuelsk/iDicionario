@@ -49,9 +49,11 @@
     [palavra sizeToFit];
     [self.view addSubview:palavra];
     
-    imagem = [[UIImageView alloc] init];
-    [imagem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", [[iDicionario.items objectAtIndex:iDicionario.letterIndex] imagem]]]];
+    imagem = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", [[iDicionario.items objectAtIndex:iDicionario.letterIndex] imagem]]]];
     [imagem sizeToFit];
+    [imagem.layer setCornerRadius:imagem.frame.size.width/2];
+    [imagem.layer setBorderWidth:0.5];
+    [imagem.layer setMasksToBounds:YES];
     [imagem setCenter:self.view.center];
     [imagem setUserInteractionEnabled:YES];
     
@@ -79,10 +81,12 @@
     [self.view addGestureRecognizer:pinch];
     //    [imagem addGestureRecognizer:pinch];
     
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(next:)];
-    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
-    [swipeLeft setDelegate:self];
-    [self.view addGestureRecognizer:swipeLeft];
+    if (![self.navigationController.viewControllers.firstObject isMemberOfClass:[SearchViewController class]]) {
+        UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(next:)];
+        [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+        [swipeLeft setDelegate:self];
+        [self.view addGestureRecognizer:swipeLeft];
+    }
     
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(previous:)];
     [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
