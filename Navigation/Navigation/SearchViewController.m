@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTitle:@"Busca"];
+    [self setTitle:@"Buscar"];
     
     //A largura da barra é 3px maior (total de 323px) devido a animação de shake.
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, 323, 35)];

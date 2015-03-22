@@ -50,12 +50,12 @@
     [palavra sizeToFit];
     [self.view addSubview:palavra];
     
-    imagem = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", [[iDicionario.items objectAtIndex:iDicionario.letterIndex] imagem]]]];
-    [imagem sizeToFit];
+    imagem = [[UIImageView alloc] initWithImage:[[iDicionario.items objectAtIndex:iDicionario.letterIndex] imagem]];
+    [imagem setFrame:CGRectMake(0, 0, 150, 150)];
+    [imagem setCenter:self.view.center];
     [imagem.layer setCornerRadius:imagem.frame.size.width/2];
     [imagem.layer setBorderWidth:0.5];
     [imagem.layer setMasksToBounds:YES];
-    [imagem setCenter:self.view.center];
     [imagem setUserInteractionEnabled:YES];
     
     dataModif = [[UILabel alloc] initWithFrame:CGRectMake(110, 450, 0, 0)];

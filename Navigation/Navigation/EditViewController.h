@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface EditViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIToolbar *toolBar;
 

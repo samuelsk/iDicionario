@@ -10,7 +10,7 @@
 
 @implementation ItemDicionario
 
-- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra andImagem:(NSString *)newImagem {
+- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra andImagem:(UIImage *)newImagem {
     self = [super init];
     if (self) {
         [self setLetra:newLetra];

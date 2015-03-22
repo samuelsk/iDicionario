@@ -30,7 +30,7 @@ static bool didFillItems = NO;
         self.items = [[NSMutableArray alloc] init];
         int palavraCount = 0;
         for (int i = 'A'; i <= 'Z'; i++) {
-            [self.items addObject:[[ItemDicionario alloc] initWithLetra:[NSString stringWithFormat:@"%c", i] andPalavra:[NSString stringWithFormat:@"%@", [palavras objectAtIndex:palavraCount]] andImagem:[NSString stringWithFormat:@"%c", i]]];
+            [self.items addObject:[[ItemDicionario alloc] initWithLetra:[NSString stringWithFormat:@"%c", i] andPalavra:[NSString stringWithFormat:@"%@", [palavras objectAtIndex:palavraCount]] andImagem:[UIImage imageNamed:[NSString stringWithFormat:@"%c", i]]]];
             palavraCount++;
         }
     }
