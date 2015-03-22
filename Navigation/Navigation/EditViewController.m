@@ -14,6 +14,7 @@
 @interface EditViewController () {
     UITextField *palavra;
     UIImageView *imagem;
+    UIDatePicker *dataModif;
 }
 
 @end
@@ -44,6 +45,12 @@
     [imagem setUserInteractionEnabled:YES];
     [self.view addSubview:imagem];
     
+    dataModif = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 340, 0, 0)];
+    [dataModif setDatePickerMode:UIDatePickerModeDate];
+    //Não é necessário realizar uma ação toda a vez que o usuário girar a rodinha, apenas quando ele finalizar a edição.
+//    [dataModif addTarget:self action:@selector(dataSelec) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:dataModif];
+    
     [self addGestureRecognizers];
 }
 
@@ -60,11 +67,15 @@
 
 - (void)editarImagem:(id)sender {
     NSLog(@"Editar Imagem");
+    
 }
 
 - (void)done:(id)sender {
     iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
     [[iDicionario.items objectAtIndex:iDicionario.letterIndex] setPalavra:palavra.text];
+    [[iDicionario.items objectAtIndex:iDicionario.letterIndex] setDataModif:[dataModif date]];
+    
+    //Corretamente atribui o vetor de view controllers na navigation controller dependendo da root view.
     if ([self.navigationController.viewControllers.firstObject isMemberOfClass:[SearchViewController class]]) {
         [self.navigationController setViewControllers:@[[[SearchViewController alloc] init], [[LetraViewController alloc] init], self]];
     } else {

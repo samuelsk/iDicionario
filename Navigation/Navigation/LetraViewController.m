@@ -15,6 +15,7 @@
 @implementation LetraViewController {
     UILabel *palavra;
     UIImageView *imagem;
+    UILabel *dataModif;
 }
 
 
@@ -56,6 +57,11 @@
     [imagem.layer setMasksToBounds:YES];
     [imagem setCenter:self.view.center];
     [imagem setUserInteractionEnabled:YES];
+    
+    dataModif = [[UILabel alloc] initWithFrame:CGRectMake(110, 450, 0, 0)];
+    [dataModif setText:[[[[iDicionario.items objectAtIndex:iDicionario.letterIndex] dataModif] description] substringToIndex:10]];
+    [dataModif sizeToFit];
+    [self.view addSubview:dataModif];
     
     [self addGestureRecognizers];
 }
