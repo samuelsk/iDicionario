@@ -14,6 +14,9 @@
 static iDicionarioManager *singleton = nil;
 static bool isFirstAccess = YES;
 
+
+#pragma mark - Dicionário
+
 + (id)sharedInstance{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -49,6 +52,9 @@ static bool isFirstAccess = YES;
     [realm addObjects:self.items];
     [realm commitWriteTransaction];
 }
+
+
+#pragma mark Busca
 
 - (int)buscaPalavra:(NSString *)termo {
     for (int i = 0; i < self.items.count; i++) {

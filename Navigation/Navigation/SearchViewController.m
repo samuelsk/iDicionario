@@ -64,7 +64,7 @@
 }
 
 
-#pragma mark - Search Bar
+#pragma mark Search Bar
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];

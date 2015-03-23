@@ -83,6 +83,9 @@
     }
 }
 
+
+#pragma mark Imagine Picker
+
 - (void)tirarFoto {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     [picker setDelegate:self];
