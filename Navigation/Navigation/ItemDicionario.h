@@ -13,12 +13,12 @@
 
 @property (strong, nonatomic) NSString *letra;
 @property (strong, nonatomic) NSString *palavra;
-//@property (strong, nonatomic) NSData *imagem;
+@property (strong, nonatomic) NSData *imagem;
 @property (strong, nonatomic) NSDate *dataModif;
 
-//- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra andImagem:(UIImage *)newImagem;
-- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra;
+- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra andImagem:(UIImage *)newImagem;
 
-//- (UIImage *)getImagem;
+- (UIImage *)getDataImage;
+- (void)dataWithImagem:(UIImage *)newImagem;
 
 @end

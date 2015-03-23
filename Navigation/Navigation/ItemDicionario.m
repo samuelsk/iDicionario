@@ -10,28 +10,23 @@
 
 @implementation ItemDicionario
 
-- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra {
+- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra andImagem:(UIImage *)newImagem {
     self = [super init];
     if (self) {
         [self setLetra:newLetra];
         [self setPalavra:newPalavra];
+        [self setImagem:UIImagePNGRepresentation(newImagem)];
         [self setDataModif:[NSDate dateWithTimeIntervalSinceNow:0]];
     }
     return self;
 }
 
-//- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra andImagem:(UIImage *)newImagem {
-//    self = [super init];
-//    if (self) {
-//        [self setLetra:newLetra];
-//        [self setPalavra:newPalavra];
-//        [self setImagem:UIImagePNGRepresentation(newImagem)];
-//    }
-//    return self;
-//}
+- (UIImage *)getDataImage {
+    return [UIImage imageWithData:self.imagem];
+}
 
-//- (UIImage *)getImagem {
-//    return [UIImage imageWithData:self.imagem];
-//}
+- (void)dataWithImagem:(UIImage *)newImagem {
+    [self setImagem:UIImagePNGRepresentation(newImagem)];
+}
 
 @end

@@ -39,8 +39,7 @@ static bool isFirstAccess = YES;
     NSArray *palavras = @[@"Adventure Time", @"Batman Beyond", @"Courage the Cowardly Dog", @"Dexter's Laboratory", @"Earthworm Jim", @"Futurama", @"Gravity Falls", @"He-Man", @"Invader Zim", @"Johnny Bravo", @"Kim Possible", @"Looney Tunes", @"Megas XLR", @"Neon Genesis Evangelion", @"Ozzy & Drix", @"Pinky and the Brain", @"Quick Draw McGraw", @"Robot Chicken", @"Samurai Jack", @"ThunderCats", @"Underdog", @"Voltron", @"Woody Woodpecker", @"Xiaolin Showdown", @"Yu-Gi-Oh!", @"Zatch Bell!"];
     int palavraCount = 0;
     for (int i = 'A'; i <= 'Z'; i++) {
-//        [self.items addObject:[[ItemDicionario alloc] initWithLetra:[NSString stringWithFormat:@"%c", i] andPalavra:[NSString stringWithFormat:@"%@", [palavras objectAtIndex:palavraCount]] andImagem:[UIImage imageNamed:[NSString stringWithFormat:@"%c", i]]]];
-        [self.items addObject:[[ItemDicionario alloc] initWithLetra:[NSString stringWithFormat:@"%c", i] andPalavra:[NSString stringWithFormat:@"%@", [palavras objectAtIndex:palavraCount]]]];
+        [self.items addObject:[[ItemDicionario alloc] initWithLetra:[NSString stringWithFormat:@"%c", i] andPalavra:[NSString stringWithFormat:@"%@", [palavras objectAtIndex:palavraCount]] andImagem:[UIImage imageNamed:[NSString stringWithFormat:@"%c", i]]]];
         palavraCount++;
     }
     
