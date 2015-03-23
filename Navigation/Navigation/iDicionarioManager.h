@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSMutableArray *items;
 
 + (iDicionarioManager *)sharedInstance;
+- (void)resetarDicionario;
 - (int)buscaPalavra:(NSString *)termo;
 
 @end

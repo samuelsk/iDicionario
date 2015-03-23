@@ -38,11 +38,11 @@
     [palavra setDelegate:self];
     [self.view addSubview:palavra];
     
-    imagem = [[UIImageView alloc] initWithImage:[[iDicionario.items objectAtIndex:iDicionario.letterIndex] imagem]];
-    [imagem setFrame:CGRectMake(0, 0, 150, 150)];
-    [imagem setCenter:self.view.center];
-    [imagem setUserInteractionEnabled:YES];
-    [self.view addSubview:imagem];
+//    imagem = [[UIImageView alloc] initWithImage:[[iDicionario.items objectAtIndex:iDicionario.letterIndex] imagem]];
+//    [imagem setFrame:CGRectMake(0, 0, 150, 150)];
+//    [imagem setCenter:self.view.center];
+//    [imagem setUserInteractionEnabled:YES];
+//    [self.view addSubview:imagem];
     
     dataModif = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 340, 0, 0)];
     [dataModif setDatePickerMode:UIDatePickerModeDate];
@@ -109,9 +109,12 @@
 
 - (void)done:(id)sender {
     iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
     [[iDicionario.items objectAtIndex:iDicionario.letterIndex] setPalavra:palavra.text];
-    [[iDicionario.items objectAtIndex:iDicionario.letterIndex] setImagem:imagem.image];
+//    [[iDicionario.items objectAtIndex:iDicionario.letterIndex] setImagem:imagem.image];
     [[iDicionario.items objectAtIndex:iDicionario.letterIndex] setDataModif:[dataModif date]];
+    [realm commitWriteTransaction];
     
     //Atribui um vetor de view controllers na navigation controller com base na root view (i.e. se o usuário acessou a tela de edição pela SearchViewController ou pela LetraViewController).
     if ([self.navigationController.viewControllers.firstObject isMemberOfClass:[SearchViewController class]]) {

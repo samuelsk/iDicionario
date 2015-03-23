@@ -7,14 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Realm/Realm.h>
 
-@interface ItemDicionario : NSObject
+@interface ItemDicionario : RLMObject
 
 @property (strong, nonatomic) NSString *letra;
 @property (strong, nonatomic) NSString *palavra;
-@property (strong, nonatomic) UIImage *imagem;
+//@property (strong, nonatomic) NSData *imagem;
 @property (strong, nonatomic) NSDate *dataModif;
 
-- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra andImagem:(UIImage *)newImagem;
+//- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra andImagem:(UIImage *)newImagem;
+- (id)initWithLetra:(NSString *)newLetra andPalavra:(NSString *)newPalavra;
+
+//- (UIImage *)getImagem;
 
 @end

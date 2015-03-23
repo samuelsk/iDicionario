@@ -37,6 +37,7 @@
     [self.view addSubview:self.tableView
      ];
     
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(resetarDicionario)]];
 }
 
 - (void)shake {
@@ -56,15 +57,23 @@
     }];
 }
 
+- (void)resetarDicionario {
+    iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
+    [iDicionario resetarDicionario];
+    [self.tableView reloadData];
+}
+
 
 #pragma mark - Search Bar
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     iDicionarioManager *iDicionario = [iDicionarioManager sharedInstance];
     int letterIndex = [iDicionario buscaPalavra:searchBar.text];
-    if (letterIndex == -1)
+    if (letterIndex == -1) {
         [self shake];
-    else {
+        UIAlertView *noResultsAlert = [[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Nenhum resultado encontrado" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [noResultsAlert show];
+    } else {
         [iDicionario setLetterIndex:letterIndex];
         [self.navigationController pushViewController:[[LetraViewController alloc] init] animated:YES];
     }
